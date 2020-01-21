@@ -40,3 +40,41 @@ Installing Ubuntu Touch on your PinePhone then reporting the issues you find her
 * `@ubports` on Telegram
 
 [this repository's Issues tab]: https://gitlab.com/ubports/community-ports/pinephone/issues
+
+## What works, what doesn't?
+
+And yes, the Pinephone is no daily driver yet. See the list to get an idea where we are!
+
+### Working
+* Boot into GUI
+* Touchscreen
+* Charging
+* Manual brightness
+* WiFi
+
+### Working with manual steps (e.g. issue a few commands to init a subsystem)
+* Cellular: Carrier info, signal strength
+* Cellular: PIN unlock
+* Cellular: SMS in, out
+* Loudspeaker
+* Volume control
+
+### Not working
+* Offline charging
+* USB: RNDIS access
+* USB: MTP access
+* Automatic brightness
+* Hotspot
+* Earphones
+* Microphone
+* Speakerphone
+* Cellular: Data connection
+* Cellular: MMS in, out
+* Cellular: Incoming, outgoing calls
+* Cellular: Voice in calls
+* GPS
+* Bluetooth
+* Flight mode
+* Sensors: Rotation
+* Sensors: Brightness
+* Sensors: Proximity
