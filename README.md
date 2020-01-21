@@ -14,6 +14,8 @@ You will need a microSD card, 4GB or larger.
 1. Insert your microSD card into the slot on the rear of the PinePhone.
 1. Boot your PinePhone.
 
+The default password is `phablet`.
+
 It will eventually be possible to install Ubuntu Touch on the PinePhone via the UBports Installer. However, this method will likely perform the same steps as outlined here. Currently, we do not have a PinePhone in the hands of developers interested in the installer. This will change soon.
 
 ## How is the PinePhone image built?
