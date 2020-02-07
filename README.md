@@ -46,35 +46,48 @@ Installing Ubuntu Touch on your PinePhone then reporting the issues you find her
 And yes, the Pinephone is no daily driver yet. See the list to get an idea where we are!
 
 ### Working
-* Boot into GUI
-* Touchscreen
-* Charging
-* Manual brightness
-* WiFi
+* Actors: Manual brightness
+* GPU: Boot into UI
+* Misc: Charging
+* Network: WiFi
+* Sensors: Touchscreen
 
 ### Working with manual steps (e.g. issue a few commands to init a subsystem)
 * Cellular: Carrier info, signal strength
+* Cellular: Data connection
 * Cellular: PIN unlock
 * Cellular: SMS in, out
-* Loudspeaker
-* Volume control
+* Sound: Loudspeaker
+* Sound: Volume control
 
 ### Not working
-* Offline charging
-* USB: RNDIS access
-* USB: MTP access
-* Automatic brightness
-* Hotspot
-* Earphones
-* Microphone
-* Speakerphone
-* Cellular: Data connection
-* Cellular: MMS in, out
+* Actors: Notification LED
+* Actors: Torchlight
+* Actors: Vibration
+* Camera: Flashlight
+* Camera: Photo
+* Camera: Video
+* Cellular: Carrier info, signal strength
 * Cellular: Incoming, outgoing calls
+* Cellular: MMS in, out
+* Cellular: PIN unlock
+* Cellular: SMS in, out
+* Cellular: Change audio routings
 * Cellular: Voice in calls
-* GPS
-* Bluetooth
-* Flight mode
-* Sensors: Rotation
-* Sensors: Brightness
+* GPU: Video acceleration
+* Misc: Battery percentage
+* Misc: Reset to factory defaults
+* Misc: Shutdown / Reboot
+* Network: Bluetooth
+* Network:Flight mode
+* Network: Hotspot
+* Network: WiFi
+* Sensors: Automatic brightness
+* Sensors: GPS
 * Sensors: Proximity
+* Sensors: Rotation
+* Sound: Earphones
+* Sound: Microphone
+* USB: MTP access
+* USB: RNDIS access
+
