@@ -49,14 +49,15 @@ And yes, the Pinephone is no daily driver yet. See the list to get an idea where
 * Actors: Manual brightness
 * GPU: Boot into UI
 * Misc: Charging
+* Misc: Shutdown / Reboot
 * Network: WiFi
 * Sensors: Touchscreen
 
 ### Working with manual steps (e.g. issue a few commands to init a subsystem)
 * Cellular: Carrier info, signal strength
 * Cellular: Data connection
-* Cellular: PIN unlock
 * Cellular: SMS in, out
+* Network: WiFi (generally unstable)
 * Sound: Loudspeaker
 * Sound: Volume control
 
@@ -67,21 +68,17 @@ And yes, the Pinephone is no daily driver yet. See the list to get an idea where
 * Camera: Flashlight
 * Camera: Photo
 * Camera: Video
-* Cellular: Carrier info, signal strength
 * Cellular: Incoming, outgoing calls
 * Cellular: MMS in, out
 * Cellular: PIN unlock
-* Cellular: SMS in, out
 * Cellular: Change audio routings
 * Cellular: Voice in calls
 * GPU: Video acceleration
 * Misc: Battery percentage
 * Misc: Reset to factory defaults
-* Misc: Shutdown / Reboot
 * Network: Bluetooth
 * Network:Flight mode
 * Network: Hotspot
-* Network: WiFi
 * Sensors: Automatic brightness
 * Sensors: GPS
 * Sensors: Proximity
