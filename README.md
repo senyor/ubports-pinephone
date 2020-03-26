@@ -50,7 +50,6 @@ And yes, the Pinephone is no daily driver yet. See the list to get an idea where
 * Actors: Notification LED
 * Actors: Vibration
 * Cellular: Carrier info, signal strength
-* Cellular: Change audio routings
 * Cellular: Data connection
 * Cellular: Incoming, outgoing calls
 * Cellular: PIN unlock
@@ -75,6 +74,7 @@ And yes, the Pinephone is no daily driver yet. See the list to get an idea where
 * Camera: Flashlight
 * Camera: Photo
 * Camera: Video
+* Cellular: Change audio routings
 * Cellular: MMS in, out
 * GPU: Video acceleration
 * Misc: Battery percentage
