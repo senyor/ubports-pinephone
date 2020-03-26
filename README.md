@@ -52,37 +52,37 @@ And yes, the Pinephone is no daily driver yet. See the list to get an idea where
 * Misc: Shutdown / Reboot
 * Network: WiFi
 * Sensors: Touchscreen
-
-### Working with manual steps (e.g. issue a few commands to init a subsystem)
 * Cellular: Carrier info, signal strength
 * Cellular: Data connection
 * Cellular: SMS in, out
 * Network: WiFi (generally unstable)
 * Sound: Loudspeaker
 * Sound: Volume control
-
-### Not working
 * Actors: Notification LED
-* Actors: Torchlight
 * Actors: Vibration
-* Camera: Flashlight
-* Camera: Photo
-* Camera: Video
-* Cellular: Incoming, outgoing calls
-* Cellular: MMS in, out
 * Cellular: PIN unlock
 * Cellular: Change audio routings
 * Cellular: Voice in calls
+* Cellular: Incoming, outgoing calls
+* Sensors: Rotation
+
+### Working but unstable/buggy
+* Network: Bluetooth (only works after cold boot)
+* Network: Hotspot
+* Sensors: GPS
+
+### Not working
+* Actors: Torchlight
+* Camera: Flashlight
+* Camera: Photo
+* Camera: Video
+* Cellular: MMS in, out
 * GPU: Video acceleration
 * Misc: Battery percentage
 * Misc: Reset to factory defaults
-* Network: Bluetooth
 * Network:Flight mode
-* Network: Hotspot
 * Sensors: Automatic brightness
-* Sensors: GPS
 * Sensors: Proximity
-* Sensors: Rotation
 * Sound: Earphones
 * Sound: Microphone
 * USB: MTP access
