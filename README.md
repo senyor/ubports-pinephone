@@ -43,7 +43,7 @@ Installing Ubuntu Touch on your PinePhone then reporting the issues you find her
 
 ## What works, what doesn't?
 
-And yes, the Pinephone is no daily driver yet. See the list to get an idea where we are!
+And yes, the Pinephone is maybe not your daily driver yet. See the list to get an idea where we are!
 
 ### Working
 * Actors: Manual brightness
