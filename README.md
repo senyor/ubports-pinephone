@@ -59,6 +59,8 @@ And yes, the Pinephone is maybe not your daily driver yet. See the list to get a
 * Misc: Charging
 * Misc: Shutdown / Reboot
 * Network: WiFi (generally unstable)
+* Sensors: Automatic brightness
+* Sensors: Proximity
 * Sensors: Rotation
 * Sensors: Touchscreen
 * Sound: Loudspeaker
@@ -68,6 +70,7 @@ And yes, the Pinephone is maybe not your daily driver yet. See the list to get a
 * Network: Bluetooth (only works after cold boot)
 * Network: Hotspot
 * Sensors: GPS
+* Misc: Battery percentage
 
 ### Not working
 * Actors: Torchlight
@@ -77,11 +80,8 @@ And yes, the Pinephone is maybe not your daily driver yet. See the list to get a
 * Cellular: Change audio routings
 * Cellular: MMS in, out
 * GPU: Video acceleration
-* Misc: Battery percentage
 * Misc: Reset to factory defaults
 * Network:Flight mode
-* Sensors: Automatic brightness
-* Sensors: Proximity
 * Sound: Earphones
 * Sound: Microphone
 * USB: MTP access
