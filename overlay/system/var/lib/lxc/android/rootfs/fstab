@@ -1,2 +1,3 @@
 cache			/cache			ext4			defaults
 boot_a			/boot			ext4			defaults
+persist			/persist		ext4			defaults

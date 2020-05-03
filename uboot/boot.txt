@@ -1,11 +1,11 @@
 # White
 gpio set 114; gpio set 115; gpio set 116
-setenv bootargs console=tty0 console=${console} systempart=/dev/mmcblk0p9
+setenv bootargs console=${console} systempart=/dev/mmcblk${devnum}p9 devnum=${devnum}
 setenv kernel_addr_z 0x44080000
 echo "[UBPORTS] Bootargs are" ${bootargs}
 echo "[UBPORTS] Beginning load"
 
-if test "${volume_key}" = "up"; then
+if test "${volume_key}" = "up" -o -e ${devtype} ${devnum}:3 reboot-recovery; then
     # recovery-a partition
     setenv partnum 6
 else
