@@ -1,0 +1,52 @@
+# White
+gpio set 114; gpio set 115; gpio set 116
+setenv bootargs console=tty0 console=${console} systempart=/dev/mmcblk0p9
+setenv kernel_addr_z 0x44080000
+echo "[UBPORTS] Bootargs are" ${bootargs}
+echo "[UBPORTS] Beginning load"
+
+if test "${volume_key}" = "up"; then
+    # recovery-a partition
+    setenv partnum 6
+else
+    #boot-a partition
+    setenv partnum 4
+fi
+
+if load ${devtype} ${devnum}:${partnum} ${kernel_addr_z} vmlinuz; then
+  echo "[UBPORTS] Compressed kernel loaded"
+  # Yellow
+  gpio clear 114; gpio clear 115; gpio clear 116
+  gpio set 114; gpio set 115
+  if unzip ${kernel_addr_z} ${kernel_addr_r}; then
+    echo "[UBPORTS] kernel uncompressed"
+    # Red
+    gpio clear 114; gpio clear 115; gpio clear 116
+    gpio set 115
+    if load ${devtype} ${devnum}:${partnum} ${fdt_addr_r} dtb; then
+      echo "[UBPORTS] dtb loaded"
+      # Cyan
+      gpio clear 114; gpio clear 115; gpio clear 116
+      gpio set 114; gpio set 116
+      if load ${devtype} ${devnum}:${partnum} ${ramdisk_addr_r} initrd.img; then
+        echo "[UBPORTS] Booting kernel with initramfs"
+        # Green
+        gpio clear 114; gpio clear 115; gpio clear 116
+        gpio set 114
+        booti ${kernel_addr_r} ${ramdisk_addr_r}:${filesize} ${fdt_addr_r};
+      else
+        echo "[UBPORTS] Booting kernel without initramfs"
+        # Purple
+        gpio clear 114; gpio clear 115; gpio clear 116
+        gpio set 115; gpio set 116
+        booti ${kernel_addr_r} - ${fdt_addr_r}
+      fi
+    else
+      echo "[UBPORTS] Failed to load dtb"
+    fi
+  else
+    echo "[UBPORTS] Failed to unzip kernel"
+  fi
+else
+  echo "[UBPORTS] Failed to load kernel"
+fi
