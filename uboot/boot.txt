@@ -1,6 +1,15 @@
-# White
-gpio set 114; gpio set 115; gpio set 116
-setenv bootargs console=${console} systempart=/dev/mmcblk${devnum}p9 devnum=${devnum}
+# Red
+gpio clear 114; gpio clear 115; gpio clear 116
+gpio set 115
+
+if test ${devnum} = 0; then
+  setenv linux_devnum 0
+else
+  # Because wifi takes /dev/mmcblk1, eMMC becomes /dev/mmcblk2
+  setenv linux_devnum 2
+fi
+
+setenv bootargs console=${console} systempart=/dev/mmcblk${linux_devnum}p9 devnum=${linux_devnum}
 setenv kernel_addr_z 0x44080000
 echo "[UBPORTS] Bootargs are" ${bootargs}
 echo "[UBPORTS] Beginning load"
@@ -8,6 +17,9 @@ echo "[UBPORTS] Beginning load"
 if test "${volume_key}" = "up" -o -e ${devtype} ${devnum}:3 reboot-recovery; then
     # recovery-a partition
     setenv partnum 6
+    # Yellow
+    gpio clear 114; gpio clear 115; gpio clear 116
+    gpio set 114; gpio set 115
 else
     #boot-a partition
     setenv partnum 4
@@ -15,19 +27,10 @@ fi
 
 if load ${devtype} ${devnum}:${partnum} ${kernel_addr_z} vmlinuz; then
   echo "[UBPORTS] Compressed kernel loaded"
-  # Yellow
-  gpio clear 114; gpio clear 115; gpio clear 116
-  gpio set 114; gpio set 115
   if unzip ${kernel_addr_z} ${kernel_addr_r}; then
     echo "[UBPORTS] kernel uncompressed"
-    # Red
-    gpio clear 114; gpio clear 115; gpio clear 116
-    gpio set 115
     if load ${devtype} ${devnum}:${partnum} ${fdt_addr_r} dtb; then
       echo "[UBPORTS] dtb loaded"
-      # Cyan
-      gpio clear 114; gpio clear 115; gpio clear 116
-      gpio set 114; gpio set 116
       if load ${devtype} ${devnum}:${partnum} ${ramdisk_addr_r} initrd.img; then
         echo "[UBPORTS] Booting kernel with initramfs"
         # Green
@@ -35,11 +38,9 @@ if load ${devtype} ${devnum}:${partnum} ${kernel_addr_z} vmlinuz; then
         gpio set 114
         booti ${kernel_addr_r} ${ramdisk_addr_r}:${filesize} ${fdt_addr_r};
       else
-        echo "[UBPORTS] Booting kernel without initramfs"
-        # Purple
-        gpio clear 114; gpio clear 115; gpio clear 116
-        gpio set 115; gpio set 116
-        booti ${kernel_addr_r} - ${fdt_addr_r}
+        # The lack of an initramfs is a bug in ubuntu touch images
+        echo "[UBPORTS] Refusing to boot kernel without initramfs"
+        reset
       fi
     else
       echo "[UBPORTS] Failed to load dtb"
@@ -50,3 +51,5 @@ if load ${devtype} ${devnum}:${partnum} ${kernel_addr_z} vmlinuz; then
 else
   echo "[UBPORTS] Failed to load kernel"
 fi
+
+reset
