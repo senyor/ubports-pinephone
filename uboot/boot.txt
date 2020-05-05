@@ -1,7 +1,3 @@
-# Red
-gpio clear 114; gpio clear 115; gpio clear 116
-gpio set 115
-
 if test ${devnum} = 0; then
   setenv linux_devnum 0
 else
@@ -23,6 +19,9 @@ if test "${volume_key}" = "up" -o -e ${devtype} ${devnum}:3 reboot-recovery; the
 else
     #boot-a partition
     setenv partnum 4
+    # White
+    gpio clear 114; gpio clear 115; gpio clear 116
+    gpio set 114; gpio set 115; gpio set 116
 fi
 
 if load ${devtype} ${devnum}:${partnum} ${kernel_addr_z} vmlinuz; then
