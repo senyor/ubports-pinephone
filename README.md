@@ -6,15 +6,13 @@ This repository is used for documentation, issue tracking, and project managemen
 
 Please note that our PinePhone images are currently **not suitable for daily use**. See [this repository's Issues tab][] for more information. You must reinstall using these instructions often.
 
-You will need a microSD card, 4GB or larger.
+You will need a microSD card, 16GB or larger.
 
-1. Download `ubuntu-touch-pinephone.img.gz` from [the latest rootfs-pinephone build on UBports CI](https://ci.ubports.com/job/rootfs/job/rootfs-pinephone/)
-1. Extract `ubuntu-touch-pinephone.img.gz` to receive a 4GB file, `ubuntu-touch-pinephone.img`.
+1. Download `ubuntu-touch-pinephone.img.gz` from [the latest rootfs-pinephone-systemimage build on UBports CI](https://ci.ubports.com/job/rootfs/job/rootfs-pinephone-systemimage/)
+1. Extract `ubuntu-touch-pinephone.img.xz` to receive a 16GB file, `ubuntu-touch-pinephone.img`.
 1. Flash `ubuntu-touch-pinephone.img` to your microSD card using [balenaEtcher](https://www.balena.io/etcher/), Disk Image Writer, `dd`, or another method you are comfortable with.
 1. Insert your microSD card into the slot on the rear of the PinePhone.
 1. Boot your PinePhone.
-
-The default password is `phablet`.
 
 It will eventually be possible to install Ubuntu Touch on the PinePhone via the UBports Installer. However, this method will likely perform the same steps as outlined here. Currently, we do not have a PinePhone in the hands of developers interested in the installer. This will change soon.
 
@@ -56,9 +54,10 @@ And yes, the Pinephone is maybe not your daily driver yet. See the list to get a
 * Cellular: SMS in, out
 * Cellular: Voice in calls
 * GPU: Boot into UI
+* Misc: Battery percentage
 * Misc: Charging
 * Misc: Shutdown / Reboot
-* Network: WiFi (generally unstable)
+* Network:Flight mode
 * Sensors: Automatic brightness
 * Sensors: Proximity
 * Sensors: Rotation
@@ -68,9 +67,8 @@ And yes, the Pinephone is maybe not your daily driver yet. See the list to get a
 
 ### Working but unstable/buggy
 * Network: Bluetooth (only works after cold boot)
+* Network: WiFi (only works well after warm reboot)
 * Network: Hotspot
-* Sensors: GPS
-* Misc: Battery percentage
 
 ### Not working
 * Actors: Torchlight
@@ -81,7 +79,7 @@ And yes, the Pinephone is maybe not your daily driver yet. See the list to get a
 * Cellular: MMS in, out
 * GPU: Video acceleration
 * Misc: Reset to factory defaults
-* Network:Flight mode
+* Sensors: GPS
 * Sound: Earphones
 * Sound: Microphone
 * USB: MTP access
