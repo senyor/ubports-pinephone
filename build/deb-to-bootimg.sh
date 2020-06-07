@@ -26,7 +26,7 @@ sudo mv ${TMP}/boot/* ${TMPMNT}
 sudo mv ${TMPMNT}/vmlinuz-* ${TMPMNT}/vmlinuz
 sudo mv ${TMP}/usr/lib/linux-image-*/allwinner/sun50i-a64-pinephone-1.1.dtb ${TMPMNT}/dtb
 sudo mv ${TMP}/lib/modules ${TMPMNT}/modules
-sudo cp ${INT} ${TMPMNT}/
+sudo cp ${INT} ${TMPMNT}/initrd.img
 
 cleanup_loopdev "$LOOPDEV"
 
