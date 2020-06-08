@@ -2,6 +2,8 @@
 
 This repository is used for documentation, issue tracking, and project management for the [Pine64 PinePhone](https://www.pine64.org/pinephone/) port of Ubuntu Touch. Unlike the other Community Ports repositories, it does not contain Android binaries for building system images.
 
+This repository also contains configuration and scripts to build a device tarball, which is installed over an Ubuntu Touch tarball during a system-image installation process.
+
 ## How do I install Ubuntu Touch on my PinePhone?
 
 Please note that our PinePhone images are currently **not suitable for daily use**. See [this repository's Issues tab][] for more information. You must reinstall using these instructions often.
@@ -85,3 +87,10 @@ And yes, the Pinephone is maybe not your daily driver yet. See the list to get a
 * USB: MTP access
 * USB: RNDIS access
 
+## Building a device image
+
+The remainder of the files in this repository build the PinePhone device tarball, which system-image installs alongside the Ubuntu Touch tarball to create the final Ubuntu Touch software on your device.
+
+You can create a device tarball by running `./build.sh` in this repository. See the [.gitlab-ci.yml](.gitlab-ci.yml) file to see an example run of this script along with installation of dependencies. You will need sudoer rights to your machine, and the script will likely ask for your password before it finishes.
+
+Currently this script will download a Linux kernel, u-boot, and recovery image from Pine64 or UBports CI, whichever is upstream. We would like to allow users to pack a local build of any of these items as well, and for that we welcome contributions.

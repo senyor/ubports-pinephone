@@ -1,4 +1,4 @@
-set -e
+set -ex
 
 device=$1
 output=$(realpath $2)
@@ -13,5 +13,5 @@ if [ ! -f "$dir/partitions/recovery.img" ]; then
     echo "recovery.img does not exist!"
 exit 1; fi
 
-tar cfJ "$output/mainline_"$device".tar.xz" -C $dir partitions/ system/
+tar -cJf "$output/mainline_"$device".tar.xz" -C $dir partitions/ system/
 echo "$(date +%Y%m%d)-$RANDOM" > "$output/mainline_"$device".tar.build"

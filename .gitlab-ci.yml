@@ -1,0 +1,11 @@
+image: ubuntu:20.04
+
+build:
+  stage: build
+  script:
+    - apt update
+    - apt install xz-utils unzip sudo u-boot-tools wget ca-certificates -y --no-install-recommends
+    - ./build.sh
+  artifacts:
+    paths:
+      - out/*
