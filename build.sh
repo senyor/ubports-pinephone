@@ -14,7 +14,7 @@ mkdir "${TMP}/partitions"
 
 TMPDOWN=$(mktemp -d)
 cd $TMPDOWN
-    wget -O 'uboot.zip' 'https://gitlab.com/pine64-org/u-boot/-/jobs/artifacts/universalsuperbox/testing-new-partitions/download?job=build'
+    wget -O 'uboot.zip' 'https://gitlab.com/pine64-org/crust-meta/-/jobs/artifacts/master/download?job=build'
     wget -O 'kernel.zip' 'https://gitlab.com/pine64-org/linux/-/jobs/artifacts/pine64-kernel-ubports/download?job=build'
     wget -O 'recovery-pinephone.img.xz' 'https://gitlab.com/ubports/core/jumpdrive-ubports/-/jobs/artifacts/ubports-recovery/raw/recovery-pinephone.img.xz?job=build'
     wget -O 'initrd.img-touch-arm64' 'https://gitlab.com/ubports/core/initramfs-tools-ubuntu-touch/-/jobs/artifacts/xenial_-_edge_-_pine/raw/out/initrd.img-touch-arm64?job=build'
