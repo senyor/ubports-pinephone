@@ -55,8 +55,7 @@ pre-start script
 
     # HACK! WORKAROUND FOR HALIUM MISSING UBUNTU_PLATFORM_API
     if [ ! -f /system/lib/libubuntu_application_api.so ]; then
-        initctl set-env --global UBUNTU_PLATFORM_API_BACKEND=test.so.3
-        initctl set-env --global UBUNTU_PLATFORM_API_SENSOR_TEST=/etc/ubuntusensors/test.sensors
+        initctl set-env --global UBUNTU_PLATFORM_API_BACKEND=desktop_mirclient
     fi
 end script
 

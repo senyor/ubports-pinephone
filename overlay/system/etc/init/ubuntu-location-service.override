@@ -1,0 +1,6 @@
+start on started dbus and started gpsd
+
+# Hack as trust-store is broken!
+env TRUST_STORE_PERMISSION_MANAGER_IS_RUNNING_UNDER_TESTING=1
+
+exec /usr/bin/ubuntu-location-serviced --bus system --provider gpsd::Provider --provider mls::Provider
