@@ -1,18 +1,17 @@
-# PinePhone
+# PinePhone / PineTab
 
-This repository is used for documentation, issue tracking, and project management for the [Pine64 PinePhone](https://www.pine64.org/pinephone/) port of Ubuntu Touch. Unlike the other Community Ports repositories, it does not contain Android binaries for building system images.
+This repository is used for documentation, issue tracking, and project management for the [Pine64 PinePhone](https://www.pine64.org/pinephone/) and [Pine64 PineTab](https://www.pine64.org/pinetab/) ports of Ubuntu Touch. Unlike the other Community Ports repositories, it does not contain Android binaries for building system images.
 
 This repository also contains configuration and scripts to build a device tarball, which is installed over an Ubuntu Touch tarball during a system-image installation process.
 
 ## How do I install Ubuntu Touch on my PinePhone?
 
-Please note that our PinePhone images are currently **not suitable for daily use**. See [this repository's Issues tab][] for more information. You must reinstall using these instructions often.
+Please note that our PinePhone images are currently **not suitable for daily use**. See [this repository's Issues tab][] for more information.
 
 You will need a microSD card, 16GB or larger.
 
 1. Download `ubuntu-touch-pinephone.img.gz` from [the latest rootfs-pinephone-systemimage build on UBports CI](https://ci.ubports.com/job/rootfs/job/rootfs-pinephone-systemimage/)
-1. Extract `ubuntu-touch-pinephone.img.xz` to receive a 16GB file, `ubuntu-touch-pinephone.img`.
-1. Flash `ubuntu-touch-pinephone.img` to your microSD card using [balenaEtcher](https://www.balena.io/etcher/), Disk Image Writer, `dd`, or another method you are comfortable with.
+1. Flash `ubuntu-touch-pinephone.img` to your microSD card using [balenaEtcher](https://www.balena.io/etcher/), GNOME Disk Image Writer, or another method you are comfortable with.
 1. Insert your microSD card into the slot on the rear of the PinePhone.
 1. Boot your PinePhone.
 
