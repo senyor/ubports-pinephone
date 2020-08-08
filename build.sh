@@ -15,12 +15,12 @@ mkdir "${TMP}/partitions"
 TMPDOWN=$(mktemp -d)
 cd "$TMPDOWN"
     wget -O 'uboot.zip' 'https://gitlab.com/pine64-org/crust-meta/-/jobs/artifacts/temp-revert-regulator-change/download?job=build'
-    wget -O 'kernel.zip' 'https://gitlab.com/pine64-org/linux/-/jobs/artifacts/pine64-kernel-ubports/download?job=build'
+    wget -O 'linux-image-5.6.0-pine64_5.6.0-pine64-1_arm64.deb' 'https://gitlab.com/pine64-org/linux/-/jobs/artifacts/pine64-kernel-ubports-5.6.y-pinetabnewlcdcontroller/raw/linux-image-5.6.0-pine64_5.6.0-pine64-1_arm64.deb?job=build'
     wget -O 'recovery-pinephone.img.xz' 'https://gitlab.com/ubports/core/jumpdrive-ubports/-/jobs/artifacts/ubports-recovery/raw/recovery-pinephone.img.xz?job=build'
     wget -O 'recovery-pinetab.img.xz' 'https://gitlab.com/ubports/core/jumpdrive-ubports/-/jobs/artifacts/ubports-recovery/raw/recovery-pinetab.img.xz?job=build'
     wget -O 'initrd.img-touch-arm64' 'https://gitlab.com/ubports/core/initramfs-tools-ubuntu-touch/-/jobs/artifacts/xenial_-_edge_-_pine/raw/out/initrd.img-touch-arm64?job=build'
     unzip "$TMPDOWN/uboot.zip"
-    unzip "$TMPDOWN/kernel.zip"
+    # unzip "$TMPDOWN/kernel.zip"
     unxz 'recovery-pinephone.img.xz'
     unxz 'recovery-pinetab.img.xz'
     ls .
@@ -40,7 +40,7 @@ cp -av overlay/* "${TMP}/"
 
 cd "${HERE}"
 "$SCRIPT/deb-to-bootimg.sh" "${TMPDOWN}/linux-image-*-pine64_*.deb" "${TMPDOWN}/initrd.img-touch-arm64" "${TMP}/partitions/boot.img" pinetab
-cp "${TMPDOWN}/u-boot-sunxi-with-spl-pinebook.bin" "${TMP}/partitions/loader.img"
+cp "${TMPDOWN}/u-boot-sunxi-with-spl-pinephone.bin" "${TMP}/partitions/loader.img"
 cp "${TMPDOWN}/recovery-pinetab.img" "${TMP}/partitions/recovery.img"
 cp -av overlay/* "${TMP}/"
 "$SCRIPT/build-tarball-mainline.sh" pinetab "${OUT}" "${TMP}"
