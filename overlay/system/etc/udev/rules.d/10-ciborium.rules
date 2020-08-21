@@ -1,0 +1,1 @@
+DEVPATH=="/devices/platform/soc/1c11000.mmc/mmc_host/mmc2/mmc2:0001/block/mmcblk2/*", ENV{UDISKS_SYSTEM}="1"
