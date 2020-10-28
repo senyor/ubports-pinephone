@@ -4,33 +4,35 @@ start on started dbus
 stop on stopping dbus
 
 pre-start script
-	echo "Enabling EG25 WWAN module"
-	# GPIO35 is PWRKEY
-	# GPIO68 is RESET_N
-	# GPIO232 is W_DISABLE#
-	for i in 35 68 232
-	do
-		[ -e /sys/class/gpio/gpio$i ] && continue
-		echo $i > /sys/class/gpio/export || return 1
-		echo out > /sys/class/gpio/gpio$i/direction || return 1
-	done
-
-	echo 0 > /sys/class/gpio/gpio68/value || return 1
-	echo 0 > /sys/class/gpio/gpio232/value || return 1
-
-	( echo 1 > /sys/class/gpio/gpio35/value && sleep 2 && echo 0 > /sys/class/gpio/gpio35/value ) || return 1
+	echo 1 > /sys/class/modem-power/modem-power/device/powered
+	/usr/bin/enable-modem
 end script
 
 post-start script
-    /usr/bin/enable-modem
+	# Wait until the modem is found
+	/usr/share/ofono/scripts/list-modems | grep -q "quectelqmi"
+	while [ $? -ne 0 ]; do
+		sleep 1
+	/usr/share/ofono/scripts/list-modems | grep -q "quectelqmi"
+	done
+
+	sleep 2
+
+	# Wait until the modem is enabled
+	/usr/share/ofono/scripts/enable-modem | grep -q "quectelqmi"
+	while [ $? -ne 0 ]; do
+		sleep 1
+		/usr/share/ofono/scripts/enable-modem
+	done
+
+	sleep 2
+	/usr/share/ofono/scripts/online-modem
 end script
 
 post-stop script
-	echo "Disabling EG25 WWAN module"
-	echo 1 > /sys/class/gpio/gpio68/value
-	echo 1 > /sys/class/gpio/gpio232/value
-
-	echo 1 > /sys/class/gpio/gpio35/value && sleep 2 && echo 0 > /sys/class/gpio/gpio35/value
+	echo "Disabling EG25 WWAN module (modem_power)"
+	echo 0 > /sys/class/modem-power/modem-power/device/powered
+	echo "Done disabling EG25 WWAN module"
 end script
 
 expect fork
