@@ -42,6 +42,7 @@ SectionVerb {
 	Value {
 		PlaybackPCM "hw:CARD=PinePhone"
 		CapturePCM "hw:CARD=PinePhone"
+		PlaybackRate 8000
 	}
 }
 
