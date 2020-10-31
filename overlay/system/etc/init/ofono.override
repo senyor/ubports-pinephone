@@ -4,7 +4,8 @@ start on started dbus
 stop on stopping dbus
 
 pre-start script
-	echo 1 > /sys/class/modem-power/modem-power/device/powered
+	while [ ! -f /sys/class/modem-power/modem-power/device/powered_blocking ]; do sleep 1; done
+	echo 1 > /sys/class/modem-power/modem-power/device/powered_blocking
 	/usr/bin/enable-modem
 end script
 
@@ -27,12 +28,6 @@ post-start script
 
 	sleep 2
 	/usr/share/ofono/scripts/online-modem
-end script
-
-post-stop script
-	echo "Disabling EG25 WWAN module (modem_power)"
-	echo 0 > /sys/class/modem-power/modem-power/device/powered
-	echo "Done disabling EG25 WWAN module"
 end script
 
 expect fork

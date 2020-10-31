@@ -1,7 +1,6 @@
 #!/bin/sh
 
 # https://gitlab.com/postmarketOS/pmaports/-/blob/517f905b849116fa39a811d041d625aaf2df2802/device/community/device-pine64-pinephone/setup-modem.sh
-# But switched to modem-cmd
 
 log() {
 	echo "$@"
@@ -40,7 +39,7 @@ log "Waiting for the modem to initialize"
 INITIALIZED=false
 for second in $(seq 1 15)
 do
-        if modem-cmd '/dev/EG25.AT' "AT+QDAI?" grep -q OK
+        if echo "AT+QDAI?" | atinout - $DEV - | grep -q OK
         then
                 INITIALIZED=true
                 break
@@ -60,10 +59,10 @@ else
 fi
 
 # Read current config
-QDAI_ACTUAL_CONFIG=$(modem-cmd '/dev/EG25.AT' "AT+QDAI?")
-QCFG_RISIGNALTYPE_ACTUAL_CONFIG=$(modem-cmd '/dev/EG25.AT' 'AT+QCFG="risignaltype"')
-QMBNCFG_ACTUAL_CONFIG=$(modem-cmd '/dev/EG25.AT' 'AT+QMBNCFG="AutoSel"')
-QCFG_IMS_ACTUAL_CONFIG=$(modem-cmd '/dev/EG25.AT' 'AT+QCFG="ims"')
+QDAI_ACTUAL_CONFIG=$(echo "AT+QDAI?" | atinout - $DEV -)
+QCFG_RISIGNALTYPE_ACTUAL_CONFIG=$(echo 'AT+QCFG="risignaltype"' | atinout - $DEV -)
+QMBNCFG_ACTUAL_CONFIG=$(echo 'AT+QMBNCFG="AutoSel"' | atinout - $DEV -)
+QCFG_IMS_ACTUAL_CONFIG=$(echo 'AT+QCFG="ims"' | atinout - $DEV -)
 
 if echo $QDAI_ACTUAL_CONFIG | grep -q $QDAI_CONFIG && \
 	echo $QCFG_RISIGNALTYPE_ACTUAL_CONFIG | grep -q $QCFG_RISIGNALTYPE_CONFIG && \
@@ -78,7 +77,7 @@ fi
 # then reboot it
 
 # Configure audio
-RET=$(modem-cmd '/dev/EG25.AT' "AT+QDAI=$QDAI_CONFIG")
+RET=$(echo "AT+QDAI=$QDAI_CONFIG" | atinout - $DEV -)
 
 if ! echo $RET | grep -q OK
 then
@@ -87,7 +86,7 @@ then
 fi
 
 # Configure ring device
-RET=$(modem-cmd '/dev/EG25.AT' "AT+QCFG=\"risignaltype\",\"$QCFG_RISIGNALTYPE_CONFIG\"")
+RET=$(echo "AT+QCFG=\"risignaltype\",\"$QCFG_RISIGNALTYPE_CONFIG\"" | atinout - $DEV -)
 
 if ! echo $RET | grep -q OK
 then
@@ -96,7 +95,7 @@ then
 fi
 
 # Configure VoLTE auto selecting profile
-RET=$(modem-cmd '/dev/EG25.AT' "AT+QMBNCFG=\"AutoSel\",$QMBNCFG_CONFIG")
+RET=$(echo "AT+QMBNCFG=\"AutoSel\",$QMBNCFG_CONFIG" | atinout - $DEV -)
 
 if ! echo $RET | grep -q OK
 then
@@ -105,7 +104,7 @@ then
 fi
 
 # Enable VoLTE
-RET=$(modem-cmd '/dev/EG25.AT' "AT+QCFG=\"ims\",$QCFG_IMS_CONFIG")
+RET=$(echo "AT+QCFG=\"ims\",$QCFG_IMS_CONFIG" | atinout - $DEV -)
 
 if ! echo $RET | grep -q OK
 then
@@ -117,7 +116,7 @@ fi
 # 1 Set the mode to full functionality (vs 4: no RF, and 0: min functionality)
 # 1 Reset the modem before changing mode (only available with 1 above)
 #
-RET=$(modem-cmd '/dev/EG25.AT' "AT+CFUN=1,1")
+RET=$(echo "AT+CFUN=1,1" | atinout - $DEV -)
 
 if ! echo $RET | grep -q OK
 then
