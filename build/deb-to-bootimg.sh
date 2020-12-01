@@ -7,7 +7,6 @@ source "$(dirname $0)/mk-loopdev.sh"
 DEB=$(realpath $1)
 INT=$(realpath $2)
 OUT=$(realpath $3)
-DEVICE="$4"
 
 TMP=$(mktemp -d)
 TMPMNT=$(mktemp -d)
@@ -25,7 +24,8 @@ LOOPDEV=$(mount_loopdev "$OUT" "$TMPMNT")
 
 sudo mv ${TMP}/boot/* ${TMPMNT}
 sudo mv ${TMPMNT}/vmlinuz-* ${TMPMNT}/vmlinuz
-sudo mv ${TMP}/usr/lib/linux-image-*/allwinner/sun50i-a64-${DEVICE}.dtb ${TMPMNT}/dtb
+sudo mkdir -p ${TMPMNT}/dtbs/allwinner/
+sudo mv ${TMP}/usr/lib/linux-image-*/allwinner/sun50i-a64-pine*.dtb ${TMPMNT}/dtbs/allwinner/
 sudo mv ${TMP}/lib/modules ${TMPMNT}/modules
 sudo cp ${INT} ${TMPMNT}/initrd.img
 

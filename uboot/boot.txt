@@ -13,12 +13,14 @@ echo "[UBPORTS] Beginning load"
 if test "${volume_key}" = "up" -o -e ${devtype} ${devnum}:3 reboot-recovery; then
     # recovery-a partition
     setenv partnum 6
+    setenv fdtfile 'dtb'
     # Yellow
     gpio clear 114; gpio clear 115; gpio clear 116
     gpio set 114; gpio set 115
 else
     #boot-a partition
     setenv partnum 4
+    setenv fdtfile "dtbs/${fdtfile}"
     # White
     gpio clear 114; gpio clear 115; gpio clear 116
     gpio set 114; gpio set 115; gpio set 116
@@ -28,7 +30,7 @@ if load ${devtype} ${devnum}:${partnum} ${kernel_addr_z} vmlinuz; then
   echo "[UBPORTS] Compressed kernel loaded"
   if unzip ${kernel_addr_z} ${kernel_addr_r}; then
     echo "[UBPORTS] kernel uncompressed"
-    if load ${devtype} ${devnum}:${partnum} ${fdt_addr_r} dtb; then
+    if load ${devtype} ${devnum}:${partnum} ${fdt_addr_r} "${fdtfile}"; then
       echo "[UBPORTS] dtb loaded"
       if load ${devtype} ${devnum}:${partnum} ${ramdisk_addr_r} initrd.img; then
         echo "[UBPORTS] Booting kernel with initramfs"

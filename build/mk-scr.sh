@@ -14,7 +14,13 @@ mkfs.ext4 scr.img
 
 LOOPDEV=$(mount_loopdev scr.img "$TMP")
 
-sudo mkimage -A arm -O linux -T script -C none -n "U-Boot boot script" -d $SRC/boot.txt "$TMP/boot.scr"
+if [ "$device" = 'pinetab' ]; then
+    cat "$SRC/boot-pinetab-prepend.txt" "$SRC/boot.txt" | sudo tee "$TMP/boot.txt"
+else
+    sudo cp "$SRC/boot.txt" "$TMP/boot.txt"
+fi
+
+sudo mkimage -A arm -O linux -T script -C none -n "U-Boot boot script" -d "$TMP/boot.txt" "$TMP/boot.scr"
 
 cleanup_loopdev "$LOOPDEV"
 

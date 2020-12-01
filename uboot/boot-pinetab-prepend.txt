@@ -1,0 +1,1 @@
+setenv fdtfile 'dtbs/allwinner/sun50i-a64-pinetab.dtb'
