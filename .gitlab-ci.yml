@@ -4,7 +4,7 @@ build:
   stage: build
   script:
     - apt update
-    - apt install xz-utils unzip sudo u-boot-tools wget ca-certificates -y --no-install-recommends
+    - apt install xz-utils unzip sudo u-boot-tools wget ca-certificates binutils -y --no-install-recommends
     - ./build.sh
   artifacts:
     paths:
