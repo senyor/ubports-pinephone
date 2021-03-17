@@ -1,1 +1,18 @@
-stop on stopping dbus or stopped eg25 RESULT=ok
+stop on stopping dbus or stopped eg25 RESULT=failed
+
+post-start script
+    echo 'Trying to find the modem'
+    while ! /usr/share/ofono/scripts/list-modems | grep -q 'quectelqmi' > /dev/null; do
+        sleep 5
+    done
+
+    sleep 2
+
+    echo 'Enabling modem'
+    while ! /usr/share/ofono/scripts/enable-modem | grep -q 'quectelqmi' > /dev/null; do
+        sleep 5
+    done
+    echo 'Modem enabled'
+end script
+
+exec ofonod
