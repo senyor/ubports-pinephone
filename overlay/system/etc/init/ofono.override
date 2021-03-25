@@ -1,4 +1,4 @@
-stop on stopping dbus or stopped eg25 RESULT=failed
+stop on stopping dbus
 
 post-start script
     echo 'Trying to find the modem'
