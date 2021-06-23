@@ -29,7 +29,7 @@ cd "$HERE"
 
 "$SCRIPT/deb-to-bootimg.sh" "${TMPDOWN}/linux-image-*-pine64_*.deb" "${TMPDOWN}/initrd.img-touch-arm64pinephone" "${TMP}/partitions/boot.img" pinephone-1.1
 "$SCRIPT/wget-extract-deb.sh" 'https://repo.ubports.com/pool/xenial/main/l/linux-firmware-rtlwifi/linux-firmware-rtlwifi_20200316+0ubports0+0~xenial20200412191958.2~1.gbpdcaffd_all.deb' "${TMP}/system"
-"$SCRIPT/wget-extract-deb.sh" 'https://repo.ubports.com/pool/xenial/main/l/linux-firmware-pine64-rtl8723-bt/linux-firmware-pine64-rtl8723-bt_20190223+0ubports0+0~xenial20200412190853.3~1.gbp327449_all.deb' "${TMP}/system"
+"$SCRIPT/wget-extract-deb.sh" 'https://repo.ubports.com/pool/xenial/main/l/linux-firmware-pine64-rtl8723-bt/linux-firmware-pine64-rtl8723-bt_20200705+0ubports0+0~20210412140941.5+ubports16.04~1.gbp00406b_all.deb' "${TMP}/system"
 "$SCRIPT/mk-scr.sh" 'uboot' "${TMP}/partitions/"
 "$SCRIPT/mk-persist.sh" 'uboot' "${TMP}/partitions/"
 
