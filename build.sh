@@ -15,7 +15,7 @@ mkdir "${TMP}/partitions"
 TMPDOWN=$(mktemp -d)
 cd "$TMPDOWN"
     wget -O 'uboot.zip' 'https://gitlab.com/pine64-org/crust-meta/-/jobs/artifacts/master/download?job=build'
-    wget -O 'linux-image-5.10.19-pine64_5.10.19-pine64-1_arm64.deb' 'https://gitlab.com/pine64-org/linux/-/jobs/artifacts/pine64-kernel-ubports-5.10.y-megi/raw/linux-image-5.10.19-pine64_5.10.19-pine64-1_arm64.deb?job=build'
+    wget -O 'linux-image-5.10.19-pine64_5.10.19-pine64-1_arm64.deb' 'https://gitlab.com/ubports/community-ports/non-android/linux/-/jobs/artifacts/pine-a64-5.13.y-megi/raw/linux-image-5.13.1-pine64_5.13.1-pine64-1_arm64.deb?job=build'
     wget -O 'recovery-pinephone.img.xz' 'https://gitlab.com/ubports/core/jumpdrive-ubports/-/jobs/artifacts/ubports-recovery/raw/recovery-pinephone.img.xz?job=build'
     wget -O 'recovery-pinetab.img.xz' 'https://gitlab.com/ubports/core/jumpdrive-ubports/-/jobs/artifacts/ubports-recovery/raw/recovery-pinetab.img.xz?job=build'
     wget -O 'initrd.img-touch-arm64pinephone' 'https://gitlab.com/ubports/core/initramfs-tools-ubuntu-touch/-/jobs/artifacts/xenial_-_edge_-_pine/raw/out/initrd.img-touch-arm64pinephone?job=build'
