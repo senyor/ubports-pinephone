@@ -4,8 +4,9 @@ set -xe
 
 source "$(dirname $0)/mk-loopdev.sh"
 
-SRC=$1
-OUT=$2
+DEVICE="$1"
+SRC="$2"
+OUT="$3"
 
 TMP=$(mktemp -d)
 
@@ -14,7 +15,7 @@ mkfs.ext4 scr.img
 
 LOOPDEV=$(mount_loopdev scr.img "$TMP")
 
-if [ "$device" = 'pinetab' ]; then
+if [ "$DEVICE" = 'pinetab' ]; then
     cat "$SRC/boot-pinetab-prepend.txt" "$SRC/boot.txt" | sudo tee "$TMP/boot.txt"
 else
     sudo cp "$SRC/boot.txt" "$TMP/boot.txt"
