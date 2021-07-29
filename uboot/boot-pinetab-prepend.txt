@@ -1,1 +1,1 @@
-setenv fdtfile 'allwinner/sun50i-a64-pinetab.dtb'
+setenv fdtfile 'allwinner/sun50i-a64-pinetab-early-adopter.dtb'
