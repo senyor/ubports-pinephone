@@ -1,6 +1,10 @@
 stop on stopping dbus
 
 post-start script
+    if [ $(device-info get Name) != 'pinephone' ]; then
+        exit 0
+    fi
+
     echo 'Trying to find the modem'
     while ! /usr/share/ofono/scripts/list-modems | grep -q 'quectelqmi' > /dev/null; do
         sleep 5
