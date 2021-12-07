@@ -6,8 +6,6 @@ This repository also contains configuration and scripts to build a device tarbal
 
 ## How do I install Ubuntu Touch on my PinePhone?
 
-Please note that our PinePhone images are currently **not suitable for daily use**. See [this repository's Issues tab][] for more information.
-
 You will need a microSD card, 8GB or larger.
 
 1. Download `ubuntu-touch-pinephone.img.gz` from [the latest rootfs-pinephone-systemimage build on UBports CI](https://ci.ubports.com/job/rootfs/job/rootfs-pinephone-systemimage/)
