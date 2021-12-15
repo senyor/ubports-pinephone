@@ -8,7 +8,7 @@ This repository also contains configuration and scripts to build a device tarbal
 
 You will need a microSD card, 8GB or larger.
 
-1. Download `ubuntu-touch-pinephone.img.gz` from [the latest rootfs-pinephone-systemimage build on UBports CI](https://ci.ubports.com/job/rootfs/job/rootfs-pinephone-systemimage/)
+1. Download `ubuntu-touch-pinephone.img.xz` from [the latest rootfs-pinephone-systemimage build on UBports CI](https://ci.ubports.com/job/rootfs/job/rootfs-pinephone-systemimage/)
 1. Flash `ubuntu-touch-pinephone.img` to your microSD card using [balenaEtcher](https://www.balena.io/etcher/), GNOME Disk Image Writer, or another method you are comfortable with.
 1. Insert your microSD card into the slot on the rear of the PinePhone.
 1. Boot your PinePhone.
